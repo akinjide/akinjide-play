@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void binarySearch();
-void bubblesort();
+void initbinarySearch();
+void initbubblesort();
+void initstack();
 
 int main()
 {
-    binarySearch();
-    bubblesort();
+    initbinarySearch();
+    initbubblesort();
+    initstack();
     return 0;
 }

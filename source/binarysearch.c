@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-void binarySearch();
+void initbinarySearch();
 int recursive(int A[], int low, int high, int x);
 int iterative(int A[], int n, int x);
 
@@ -31,17 +33,18 @@ int iterative(int A[], int n, int x)
     return -1;
 }
 
-void binarySearch()
+void initbinarySearch()
 {
     int k, x, y;
-    int A[] = {2, 4, 5, 7, 13, 14, 15, 23};
+    int A[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     printf("\nBinary Search\n\n");
-    printf("Enter a number: ");
-    scanf("%d", &k);
+    srand(time(0));
+    k = rand() % 10 + 1;
+    printf("Searching for number -- %d", k);
 
-    x = recursive(A, 0, 8, k);
-    y = iterative(A, 8, k);
+    x = recursive(A, 0, 10, k);
+    y = iterative(A, 10, k);
 
-    printf("\nrecursive approach: %d", x);
-    printf("\niterative approach: %d", y);
+    printf("\nrecursive approach index: %d", x);
+    printf("\niterative approach index: %d", y);
 }

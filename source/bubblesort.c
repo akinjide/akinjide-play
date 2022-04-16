@@ -2,7 +2,7 @@
 
 #define N 8
 
-void bubblesort();
+void initbubblesort();
 void sort();
 
 void sort(int *numbers, int n) {
@@ -19,7 +19,7 @@ void sort(int *numbers, int n) {
     }
 }
 
-void bubblesort()
+void initbubblesort()
 {
     int i;
     int A[] = {7, 15, 4, 14, 2, 13, 5, 23};
