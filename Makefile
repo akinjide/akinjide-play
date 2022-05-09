@@ -4,11 +4,11 @@ all: build
 
 build: clean build_asm
 	@echo Building..
-	gcc -Wall -ansi -pedantic source/*.c main.c -o bin/main
+	gcc -Wall -ansi -pedantic src/*.c main.c -o bin/main
 
 build_asm:
 	@echo Building assembly code
-	gcc -S -fverbose-asm -Wall -ansi -pedantic source/*.c main.c
+	gcc -S -fverbose-asm -Wall -ansi -pedantic src/*.c main.c
 	mv *.s bin/
 
 clean:
@@ -17,4 +17,4 @@ clean:
 
 copy:
 	@echo Copying... && \
-	cp source/*.txt bin/
+	cp src/*.txt bin/
