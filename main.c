@@ -5,6 +5,7 @@ void initbinarySearch();
 void initbubblesort();
 void initstack();
 void initlinkedlist();
+void inittrie();
 
 int main()
 {
@@ -12,5 +13,6 @@ int main()
     initbubblesort();
     initstack();
     initlinkedlist();
+    inittrie();
     return 0;
 }
