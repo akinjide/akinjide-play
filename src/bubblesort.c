@@ -2,8 +2,10 @@
 
 #define N 8
 
-void initbubblesort();
+void runbubblesort();
 void sort();
+
+void assertIntN(char *name, int *actual, int *expect, int size);
 
 void sort(int *numbers, int n) {
     int i, j, temp;
@@ -19,17 +21,12 @@ void sort(int *numbers, int n) {
     }
 }
 
-void initbubblesort()
+void runbubblesort()
 {
-    int i;
     int A[] = {7, 15, 4, 14, 2, 13, 5, 23};
-    printf("\n\nBubble Sort\n\n");
+    int desc[] = {23, 15, 14, 13, 7, 5, 4, 2};
 
     sort(A, N);
-
-    printf("SORTED: DESC\n");
-    for (i = 0; i < N; i++) {
-        printf("%d ", *(A + i));
-    }
+    assertIntN("Bubble Sort: should sort descending order", A, desc, N);
 }
 

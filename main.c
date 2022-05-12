@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void initbinarySearch();
-void initbubblesort();
-void initstack();
-void initlinkedlist();
-void inittrie();
+void runlinkedlist();
+void runbubblesort();
+void runbinarysearch();
+void runstack();
+void runtrie();
 
 int main()
 {
-    initbinarySearch();
-    initbubblesort();
-    initstack();
-    initlinkedlist();
-    inittrie();
+    runlinkedlist();
+    runbubblesort();
+    runbinarysearch();
+    runstack();
+    runtrie();
     return 0;
 }

@@ -2,23 +2,29 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "assert.h"
+
 #define ALPHABETS 26
 #define WORDS 5
 
-struct trieNode {
-	struct trieNode *children[ALPHABETS];
+typedef struct TrieNode TrieNode;
+
+struct TrieNode {
+	TrieNode *children[ALPHABETS];
 	int isEnd;
 };
 
-void inittrie();
-struct trieNode *getNode();
+void runtrie();
+TrieNode *getNode();
 void insert();
 int search();
 
-struct trieNode *getNode()
+void assertInt(char *name, int actual, int expect);
+
+TrieNode *getNode()
 {
-	struct trieNode *node = NULL;
-	node = (struct trieNode *)malloc(sizeof(struct trieNode));
+	TrieNode *node = NULL;
+	node = (TrieNode *)malloc(sizeof(TrieNode));
 
 	if (node)
 	{
@@ -34,11 +40,11 @@ struct trieNode *getNode()
 	return node;
 }
 
-void insert(struct trieNode *root, char *key)
+void insert(TrieNode *root, char *key)
 {
 	int index;
 	int level;
-	struct trieNode *crawlNode = root;
+	TrieNode *crawlNode = root;
 
 	for (level = 0; level < strlen(key); level++)
 	{
@@ -54,11 +60,11 @@ void insert(struct trieNode *root, char *key)
 	crawlNode -> isEnd = 1;
 }
 
-int search(struct trieNode *root, char *key)
+int search(TrieNode *root, char *key)
 {
 	int index;
 	int level;
-	struct trieNode *crawlNode = root;
+	TrieNode *crawlNode = root;
 
 	for (level = 0; level < strlen(key); level++)
 	{
@@ -74,22 +80,23 @@ int search(struct trieNode *root, char *key)
 	return crawlNode -> isEnd;
 }
 
-void inittrie()
+void runtrie()
 {
-	struct trieNode *root = NULL;
+	TrieNode *root = NULL;
 	char keys[WORDS][8] = {"bag", "boy", "goat", "helm", "boat"};
 	int i;
 
-	printf("\n\nTrie\n\n");
 	root = getNode();
-
 
 	for (i = 0; i < WORDS; i++)
 	{
 		insert(root, keys[i]);
 	}
 
-	printf("Found: helm= %d\n", search(root, "helm"));
-	printf("Found: boy= %d\n", search(root, "boy"));
-	printf("Not Found: ball= %d\n", search(root, "ball"));
+    assertInt("Trie: should find `helm`", search(root, "helm"), 1);
+    assertInt("Trie: should find `boy`", search(root, "boy"), 1);
+    assertInt("Trie: should find `goat`", search(root, "goat"), 1);
+    assertInt("Trie: should find `boat`", search(root, "boat"), 1);
+    assertInt("Trie: should not find `ball`", search(root, "ball"), 0);
+    assertInt("Trie: should not find `human`", search(root, "human"), 0);
 }

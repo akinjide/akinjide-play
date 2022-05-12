@@ -2,9 +2,9 @@
 
 all: build
 
-build: clean build_asm
+build: clean
 	@echo Building..
-	gcc -Wall -ansi -pedantic src/*.c main.c -o bin/main
+	gcc -Wall -ansi -pedantic -o bin/main main.c lib/*.c src/*.c
 
 build_asm:
 	@echo Building assembly code
